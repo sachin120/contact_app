@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Contacts version 4</title>
+        <meta content="text/html" charset="UTF-8"/>
+        <script src="/jresource/jquery-3.2.1.js"></script>
+        <script src="/jresource/navevent.js"></script>
+        <link rel="stylesheet"  href="/cresource/Home.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="header">
+            <div class="search_box">
+                <input id="addCont" type="button" name="Add" value="Add Contact" class="header-btn">
+                <input id="filter" type="text" name="search" placeholder="Search">
+                <span id="reset-search">Reset</span>
+            </div>
+        </div>
+        <div class="bl"></div>
+        <div id="notification"> :-)</div>
+        <div id="newContact">
+            <form action="/insert" class="hidden formB">
+                <table>
+                    <tr>
+                        <td><label for="name">Name</label></td>
+                        <td><input id="name" type="text" name="name" autocomplete="none"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="contact">Number</label></td>
+                        <td><input id="contact" type="text" name="contact" autocomplete="none"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="email_id">Email Id</label> </td>
+                        <td><input id="email_id"type="text" name="email_id"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="address">Address</label></td>
+                        <td><input id="address"type="text" name="address"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td> <input type="submit" value="Submit" class="tbutton">
+                             <input id="form-cancel" type="button" value="Cancel" class="obutton">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <br><br>
+        <div>
+            <form id="contact-details" action="/delete" class="formA">
+                <div id="table-options">
+                    <input type="submit" value="Delete" class="obutton">
+                </div>
+                <table>
+                {{range .}} 
+                    <tr>
+                        <td class="d"> <span class="del-def" recordNo="{{.Contid}}"></span></td>
+                        <td> {{.Uname}} </td>
+                        <td> {{.Prinumber}} </td>
+                        <td class="desktop-tb-row"> {{.Emailid}}</td>
+                    </tr>
+                {{end}}
+                </table>
+                <br>
+            </form>
+        </div>
+    </body>
+</html>
